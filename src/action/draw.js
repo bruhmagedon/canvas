@@ -7,8 +7,6 @@ import { multiply } from "mathjs";
 export const Draw = () => {};
 
 export const ModelDraw = ({ statusDraw: { statusDraw, setStatusDraw } }) => {
-    // * локальное использование модели, возможно его стоит модернизировать
-    // * пока что в нем только ссылка на оригнальную модель
     const { matrixModel, edges } = useModel();
 
     const { setStatus, setDrawModel, setActionModel } =
@@ -59,38 +57,6 @@ export const ModelDraw = ({ statusDraw: { statusDraw, setStatusDraw } }) => {
         setActionModel(matrixModel);
     };
 
-    const onZ = () => {
-        const z = [
-            [1, 0, 0, 0],
-            [0, 1, 0, 0],
-            [
-                -Math.cos((Math.PI * 30) / 180),
-                -Math.sin((Math.PI * 30) / 180),
-                0,
-                0,
-            ],
-
-            [0, 0, 0, 1],
-        ];
-
-        setStatus("draw");
-        const zMatrix = multiply(matrixModel, z);
-        setDrawModel((model) => ({ ...model, matrixModel: zMatrix }));
-    };
-
-    const onZ2 = () => {
-        const z = [
-            [0.7071, -0.4082, 0, 0],
-            [0, 0.8165, 0, 0],
-            [0.7071, 0.4082, 0, 0],
-            [0, 0, 0, 1],
-        ];
-
-        setStatus("draw");
-        const zMatrix = multiply(matrixModel, z);
-        setDrawModel((model) => ({ ...model, matrixModel: zMatrix }));
-    };
-
     return (
         <>
             <button
@@ -113,16 +79,6 @@ export const ModelDraw = ({ statusDraw: { statusDraw, setStatusDraw } }) => {
             {statusDraw ? (
                 <button className="buttons-panel-button" onClick={onProjection}>
                     Ортогональная проекция
-                </button>
-            ) : null}
-            {statusDraw ? (
-                <button className="buttons-panel-button" onClick={onZ}>
-                    Тест Z-Буфера
-                </button>
-            ) : null}
-            {statusDraw ? (
-                <button className="buttons-panel-button" onClick={onZ2}>
-                    Тест Z-Буфера 2
                 </button>
             ) : null}
         </>

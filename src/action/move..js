@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ModelContext } from "../app/App";
 import { ArrowButton } from "../UI/arrowButton/arrowButton";
 
@@ -68,45 +68,3 @@ const ArrowButtons = ({ onAction }) => {
         </>
     );
 };
-
-// const onMove = (e) => {
-//     if (!statusDraw) return;
-//     const movement = e.target.name;
-//     const moveDwarf = structuredClone(actionMatrix);
-//     let screenDwarf;
-//     switch (movement) {
-//         case "U":
-//             console.log(moveDwarf);
-//             for (const bodyPart in moveDwarf) {
-//                 console.log(moveDwarf[bodyPart]);
-//                 moveDwarf[bodyPart][y] -= 1;
-//             }
-//             // screenDwarf = coordConvert(moveDwarf, screenScale);
-//             // drawDwarf(screenDwarf, dwarf);
-//             break;
-//         case "L":
-//             for (const bodyPart in moveDwarf) {
-//                 moveDwarf[bodyPart][x] -= 1;
-//             }
-//             screenDwarf = coordConvert(moveDwarf, screenScale);
-//             drawDwarf(screenDwarf, dwarf);
-//             break;
-//         case "R":
-//             for (const bodyPart in moveDwarf) {
-//                 moveDwarf[bodyPart][x] += 1;
-//             }
-//             screenDwarf = coordConvert(moveDwarf, screenScale);
-//             drawDwarf(screenDwarf, dwarf);
-//             break;
-//         case "D":
-//             for (const bodyPart in moveDwarf) {
-//                 moveDwarf[bodyPart][y] += 1;
-//             }
-//             screenDwarf = coordConvert(moveDwarf, screenScale);
-//             drawDwarf(screenDwarf, dwarf);
-//             break;
-//         default:
-//             return;
-//     }
-//     setActionMatrix(moveDwarf);
-// };

@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { ModelContext } from "../app/App";
 
-import { useModel } from "../model/model";
-
 import { Range } from "../UI/range/Range";
 
 import { multiply } from "mathjs";
@@ -56,9 +54,6 @@ export const ModelRotate = () => {
 
         const rotateMatrix = modelRotate(actionModel, angle, axis);
 
-        // ! отличная синхронизация, но сломанные скейлы, надо чета придумать, но выглядит все это очень даже неплохо
-        // ! и в финалочке можно даже попробовать оставить так!
-        // ! также нужно посмотреть дефолтvalue у ротейт ренджа
         setActionModel(rotateMatrix);
 
         setDrawModel((model) => ({ ...model, matrixModel: rotateMatrix }));
